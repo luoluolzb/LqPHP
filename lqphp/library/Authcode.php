@@ -3,7 +3,7 @@
  * @description 字符串加密/解密类
  * @author      luoluolzb
  */
-namespace lqphp\lib;
+namespace lqphp\library;
 
 class Authcode
 {

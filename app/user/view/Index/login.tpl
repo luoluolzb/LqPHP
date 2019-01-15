@@ -38,7 +38,6 @@
 			</div>
 		</div>
   	</div>
-
     <script src="/static/jquery/jquery-1.12.4.min.js"></script>
     <script src="/static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
