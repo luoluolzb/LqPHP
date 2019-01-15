@@ -1,0 +1,29 @@
+{
+	"name": "luoluolzb/lqphp",
+    "type": "library",
+    "description": "The LqPHP Framework.",
+    "keywords": ["lqphp", "framework"],
+    "homepage": "https://github.com/luoluolzb/lqphp",
+    "license": "MIT",
+	"require": {
+		"php": ">=5.4",
+		"smarty/smarty": "~3.1",
+		"nikic/fast-route": "~1.2.0",
+		"catfan/Medoo": "~1.5.4",
+		"filp/whoops": "~2.1.14"
+	},
+	"authors": [
+        {
+            "name": "luoluolzb",
+            "email": "luoluolzb@163.com",
+            "homepage": "http://luoluolzb.cn",
+            "role": "Developer"
+        }
+    ],
+	"repositories": {
+	    "packagist": {
+	        "type": "composer",
+	        "url": "https://packagist.phpcomposer.com"
+	    }
+	}
+}

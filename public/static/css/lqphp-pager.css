@@ -1,0 +1,42 @@
+
+.lqphp-pager {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	text-align: center;
+}
+
+.lqphp-pager>ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.lqphp-pager>ul>li{
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.lqphp-pager>ul>li:last-child{
+	margin-right: 0;
+}
+
+.lqphp-pager>ul>li>a{
+	text-decoration: none;
+	color: #23527c;
+	border: 1px solid #ddd;
+	padding: 6px 12px;
+	display: inline-block;
+}
+
+.lqphp-pager>ul>li:hover{
+    background-color: #eee;
+}
+
+.lqphp-pager>ul>li.active{
+    background-color: #337ab7;
+}
+
+.lqphp-pager>ul>li.active>a{
+    color: #fff;
+}
