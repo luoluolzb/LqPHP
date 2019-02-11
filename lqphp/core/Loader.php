@@ -32,10 +32,10 @@ class Loader extends \lqphp\library\AutoLoader
 	{
 		if (is_string($data)) {
 			$request = Request::instance();
-			if (config('app.single_module')) {
-				$object = sprintf('app\validator\%s', $data);
-			} else {
+			if (config('app.multi_module')) {
 				$object = sprintf('app\%s\validator\%s', $request->module(), $data);
+			} else {
+				$object = sprintf('app\validator\%s', $data);
 			}
 			return new $object;
 		} else {
