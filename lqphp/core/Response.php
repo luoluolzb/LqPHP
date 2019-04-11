@@ -114,14 +114,14 @@ class Response
 
 	/**
 	 * 返回上级页面，并刷新[可选]
-	 * @param  boolean $data 是否保留上页表单数据
+	 * @param  boolean $refresh 是否刷新页面
 	 */
-	public static function repage($data = true)
+	public static function repage($refresh = true)
 	{
-		if ($data) {
-			echo "<script>window.history.go(-1);</script>";
-		} else {
+		if ($refresh) {
 			echo '<script>window.history.back();</script>';
+		} else {
+			echo "<script>window.history.go(-1);</script>";
 		}
 		exit();
 	}

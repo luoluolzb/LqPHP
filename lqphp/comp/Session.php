@@ -1,6 +1,6 @@
 <?php
 /**
- * @description Cookie操作类
+ * @description Session操作类
  * @author      luoluolzb
  */
 namespace lqphp\comp;

@@ -1,10 +1,9 @@
 ﻿# lqphp测试所需的数据库
-
 # Host: localhost  (Version: 5.5.53)
 # Date: 2019-01-11 19:24:24
 # Generator: MySQL-Front 5.3  (Build 4.234)
 
-/*!40101 SET NAMES utf8 */;
+SET NAMES utf8;
 
 CREATE DATABASE `lqphp_test`;
 

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>留言本 - LqPHP</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/lqphp-pager.css" />
+    <link rel="stylesheet" type="text/css" href="/static/libs/lqphp/lqphp-pager.css" />
 	<style type="text/css">
 body{
 	background: #eee;

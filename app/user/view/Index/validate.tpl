@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title></title>
+	<title>validate</title>
 </head>
 <body>
 	<p>用户：{$user_name}</p>

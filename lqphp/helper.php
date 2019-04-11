@@ -3,7 +3,6 @@
  * @description 助手函数库
  * @author      luoluolzb
  */
-
 use lqphp\App;
 use lqphp\Config;
 use lqphp\Controller;
@@ -197,9 +196,9 @@ if (!function_exists('cookie')) {
 			}
 		} else {
 			if (is_null($value)) {
-			return $cookie->delete($name);
+				return $cookie->delete($name);
 			} else {
-			return $cookie->set($name, $value);
+				return $cookie->set($name, $value);
 			}
 		}
 	}

@@ -137,5 +137,13 @@ Line: 4266
 Line: 4300
 
 2019/1/12
-将 runtime/tpl 目录移动到 lqphp/tpl 并修改 Responsel 类相应代码
-Line: 
+将 runtime/tpl 目录移动到 lqphp/tpl 并修改 Response 类相应代码
+Line: 4300
+
+2019/4/8
+修正部分注释
+
+2019/4/11
+修改前端库文件位置及相关demo
+修复repage()函数bug
+

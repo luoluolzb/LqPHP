@@ -1,3 +1,27 @@
+<?php
+/* Smarty version 3.1.31, created on 2019-04-11 17:52:12
+  from "E:\code\htdocs\LqPHP\app\lottery\view\Index\index.tpl" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.31',
+  'unifunc' => 'content_5caf0e4cd89504_43855266',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'b8aa4f40a049b4b9b32cc345384f29ec73ff44fb' => 
+    array (
+      0 => 'E:\\code\\htdocs\\LqPHP\\app\\lottery\\view\\Index\\index.tpl',
+      1 => 1554975709,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5caf0e4cd89504_43855266 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,8 +100,11 @@ footer{
 			<p>luoluolzb 2018/2/2</p>
 		</footer>
 	</main>
-	<script src="/static/libs/jquery/jquery-1.12.4.min.js"></script>
-	<script type="text/javascript">
+	<?php echo '<script'; ?>
+ src="/static/libs/jquery/jquery-1.12.4.min.js"><?php echo '</script'; ?>
+>
+	<?php echo '<script'; ?>
+ type="text/javascript">
 
 //随机产生一个[min, max)整数
 function random(min, max) {
@@ -135,6 +162,8 @@ $(function(){
 		});
 	});
 });
-	</script>
+	<?php echo '</script'; ?>
+>
 </body>
-</html>
+</html><?php }
+}
