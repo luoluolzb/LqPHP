@@ -1,14 +1,14 @@
 <?php
 /**
- * @description 文件类
+ * @description 文件信息类
  * @author      luoluolzb
  */
 namespace lqphp\library;
 
-class File
+class FileInfo
 {
 	/**
-	 * 后缀对应的mime类型
+	 * 文件后缀对应的mime类型
 	 * @var array
 	 */
 	protected static $mime_list = [
@@ -84,13 +84,13 @@ class File
 	 ];
 
 	/**
-	 * 保存mime获取环境结果
+	 * 保存mime环境获取结果
 	 * @var string
 	 */
 	protected static $_mime_detect = null;
 
 	/**
-	 * 文件信息
+	 * 文件路径
 	 * @var array
 	 */
 	protected $file;
@@ -147,7 +147,8 @@ class File
 		}
 
 		$type = explode(';', $type);
-		//需要加上这段，因为如果使用mime_content_type函数来获取一个不存在的$path时会返回'application/octet-stream'
+		//需要加上这段，因为如果使用mime_content_type函数来
+		//获取一个不存在的$path时会返回'application/octet-stream'
 		if ($fmime != 'internal' && $type[0] == 'application/octet-stream') {
 			$pinfo = pathinfo($file); 
 			$ext = isset($pinfo['extension']) ? strtolower($pinfo['extension']) : '';
@@ -173,11 +174,13 @@ class File
 			return self::$_mime_detect = 'mime_content_type';
 		} else if (function_exists('exec')) {
 			$result = exec('file -ib '. escapeshellarg(__FILE__));
-			if (0 === strpos($result, 'text/x-php') || 0 === strpos($result, 'text/x-c++')) {
+			if (0 === strpos($result, 'text/x-php') 
+				|| 0 === strpos($result, 'text/x-c++')) {
 				return self::$_mime_detect = 'linux';
 			}
 			$result = exec('file -Ib '. escapeshellarg(__FILE__));
-			if (0 === strpos($result, 'text/x-php') || 0 === strpos($result, 'text/x-c++')) {
+			if (0 === strpos($result, 'text/x-php') 
+				|| 0 === strpos($result, 'text/x-c++')) {
 				return self::$_mime_detect = 'bsd';
 			}
 		}
@@ -249,8 +252,8 @@ class File
 	}
 
 	/**
-	 * 获取文件的权限
-	 * @return int
+	 * 获取文件的权限字
+	 * @return integer
 	 */
 	public function perms()
 	{
@@ -258,7 +261,7 @@ class File
 	}
 
 	/**
-	 * 获取文件权限的描述
+	 * 获取文件权限的描述串
 	 * @return string
 	 */
 	public function descPerms()

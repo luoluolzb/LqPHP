@@ -8,21 +8,22 @@ namespace lqphp\data;
 interface DataInterface
 {
 	/**
-	 * 设置/获取数据
+	 * 获取或者设置数据
 	 * @param  string $data
 	 * @return mixed
 	 */
 	public function data($data = null);
 
 	/**
-	 * 渲染并发送到客户端
-	 * @return bool
-	 */
-	public function send();
-
-	/**
 	 * 获取渲染结果
 	 * @return string
 	 */
 	public function fetch();
+
+	/**
+	 * 渲染并发送到客户端
+	 * 可以用 echo $this->fetch(); 实现
+	 * @return boolean
+	 */
+	public function send();
 }

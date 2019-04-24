@@ -1,6 +1,6 @@
 <?php
 /**
- * @description psr4自动加载类
+ * @description psr-4自动加载类
  * @author      luoluolzb
  */
 namespace lqphp\library;

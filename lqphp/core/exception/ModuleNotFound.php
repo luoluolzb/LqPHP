@@ -3,8 +3,8 @@
  * @description 异常类：模块不存在
  * @author      luoluolzb
  */
-namespace lqphp\exception\NotFound;
+namespace lqphp\exception;
 
-class Module extends NotFound
+class ModuleNotFound extends \RuntimeException
 {
 }

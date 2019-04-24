@@ -4,7 +4,7 @@
  * @author      luoluolzb
  */
 namespace lqphp\comp;
-use \lqphp\library\File;
+use \lqphp\library\FileInfo;
 
 class UploadFile extends AbstractComp
 {
@@ -137,10 +137,10 @@ class UploadFile extends AbstractComp
 		$this->file['orig'] = mb_convert_encoding($file['name'], 'GBK', 'UTF-8');
 		$this->file['temp'] = mb_convert_encoding($file['tmp_name'], 'GBK', 'UTF-8');
 
-		$fileObj = new File($this->file['orig']);
+		$fileObj = new FileInfo($this->file['orig']);
 		$this->file['ext']  = $fileObj->exten();
 
-		$fileObj = new File($this->file['temp']);
+		$fileObj = new FileInfo($this->file['temp']);
 		$this->file['size'] = $fileObj->size();
 		$this->file['mime'] = $fileObj->mime();
 		$this->file['type'] = $fileObj->type();

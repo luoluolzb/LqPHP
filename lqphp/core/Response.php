@@ -4,6 +4,7 @@
  * @author      luoluolzb
  */
 namespace lqphp;
+use lqphp\exception\TypeErrorException;
 
 class Response
 {
@@ -70,7 +71,7 @@ class Response
 				$obj = new $class($this->data);
 				$obj->send();
 			} else {
-				throw new exception\TypeException("默认数据返回类型 app.default.return_type => '{$type}' 不支持");
+				throw new TypeErrorException("默认数据返回类型 app.default.return_type => '{$type}' 不支持");
 			}
 		}
 	}

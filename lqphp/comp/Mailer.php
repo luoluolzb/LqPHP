@@ -2,7 +2,7 @@
 /**
  * @description 邮件发送类(原版来自网络)
  * @author      luoluolzb
-*  @require     sockets、Fileinfo和openssl
+*  @require     需要开启 sockets、Fileinfo和openssl 扩展
 */
 namespace lqphp\comp;
 

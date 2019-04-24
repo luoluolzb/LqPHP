@@ -46,6 +46,11 @@ ul{
 	padding-bottom: 5px;
 	border-bottom: 1px solid #888;
 }
+
+footer{
+	text-align: center;
+}
+
 	</style>
 </head>
 <body>
@@ -64,13 +69,15 @@ ul{
 		{foreach $guestList as $guest}
 			<li class="guest">
 				<div class="info">
-					<span class="user">{$guest.user}</span> 在 <span class="time">{$guest.time|date_format:"%Y-%m-%d %X"}</span> 说：
+					<span class="user">{$guest.user}</span> 在
+					<span class="time">{$guest.time|date_format:"%Y/%m/%d %H:%M"}</span> 说：
 				</div>
 				<span class="content">{nl2br($guest.content)}</span>
 			</li>
 		{/foreach}
 		</ul>
 		{$pager}
+		<footer><p>Powered By LqPHP</p></footer>
 	</main>
 </body>
 </html>

@@ -5,6 +5,6 @@
  */
 namespace lqphp\exception;
 
-class TypeException extends \RuntimeException
+class TypeErrorException extends \ErrorException
 {
 }

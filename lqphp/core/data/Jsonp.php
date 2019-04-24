@@ -35,7 +35,7 @@ class Jsonp implements DataInterface
 	}
 
 	/**
-	 * 设置/获取数据
+	 * 获取或者设置数据
 	 * @param  string $data
 	 * @return mixed
 	 */
@@ -49,21 +49,21 @@ class Jsonp implements DataInterface
 	}
 
 	/**
-	 * 发送数据到客户端
-	 * @return bool
-	 */
-	public function send()
-	{
-		header('Content-Type: application/json');
-		echo $this->fetch();
-	}
-
-	/**
 	 * 获取渲染结果
 	 * @return string
 	 */
 	public function fetch()
 	{
 		return $this->callback . '(' . json_encode($this->data) . ')';
+	}
+
+	/**
+	 * 发送数据到客户端
+	 * @return boolean
+	 */
+	public function send()
+	{
+		header('Content-Type: application/json');
+		echo $this->fetch();
 	}
 }

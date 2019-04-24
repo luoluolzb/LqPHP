@@ -7,7 +7,7 @@
 /**
  * 定义系统常量
  */
-define('LQPHP_VERSION', '2.1');
+define('LQPHP_VERSION', '2.2.0');
 define('LQPHP_START_TIME', microtime(true));
 define('LQPHP_START_MEM', memory_get_usage());
 define('DS', DIRECTORY_SEPARATOR);

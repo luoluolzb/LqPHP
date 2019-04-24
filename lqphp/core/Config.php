@@ -16,7 +16,7 @@ class Config
 
 	/**
 	 * 获取一个配置
-	 * @param  string $name  键名
+	 * @param  string $name  配置名
 	 * @return mixed
 	 */
 	public static function get($name = null)
@@ -26,7 +26,7 @@ class Config
 
 	/**
 	 * 设置一个配置
-	 * @param  string $name  键名
+	 * @param  string $name  配置名
 	 * @param  string $value 值
 	 * @return boolean
 	 */
@@ -37,7 +37,7 @@ class Config
 
 	/**
 	 * 数据访问
-	 * @param  string $name  键名
+	 * @param  string $name  配置名
 	 * @param  string $value 值
 	 * @return mixed
 	 */

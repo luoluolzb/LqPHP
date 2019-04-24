@@ -147,3 +147,14 @@ Line: 4300
 修改前端库文件位置及相关demo
 修复repage()函数bug
 
+2019/4/22
+增加smarty配置
+
+2019/4/24
+lqphp\library\File 更名为 lqphp\library\FileInfo，并修改相关代码
+修改异常类及相关代码
+修改 lqph\data 几个类格式
+lqph\data\View 增加访问模板引擎变量的方法
+修改默认验证码字体
+版本号修改为三个数
+

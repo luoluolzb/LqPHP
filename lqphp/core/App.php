@@ -4,7 +4,8 @@
 * @author      luoluolzb
 */
 namespace lqphp;
-use \lqphp\library\Hook;
+use lqphp\library\Hook;
+use lqphp\exception\ClassNotFound;
 
 class App
 {
@@ -110,7 +111,7 @@ class App
 		if (isset($this->plugins[$name])) {
 			return call_user_func_array($this->plugins[$name], $args);
 		} else {
-			throw new exception\ClassNotFoundException("插件 '{$name}' 不存在");
+			throw new ClassNotFound("插件 '{$name}' 不存在");
 		;
 		}
 	}

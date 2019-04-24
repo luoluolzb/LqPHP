@@ -6,7 +6,7 @@ return [
 	//背景色
 	'background_color' => [245, 245, 245],
 	//字体文件('lqphp/ttf'目录下)
-	'font' =>  LQPHP_PATH . 'ttf/Futura.ttf',
+	'font' =>  LQPHP_PATH . 'ttf/Arial.ttf',
 	//图片格式(png/jpeg/gif/webp/xbm/xbmp/gd/gd2)
 	'format' => 'png',
 	//字体大小

@@ -93,7 +93,12 @@ class Cookie extends AbstractComp
 	*/
 	public function delete($name)
 	{
-		setcookie($name, '', time() - 3600, $this->conf['path'], $this->conf['domain'], $this->conf['secure'], $this->conf['httponly']);
+		setcookie($name, '', time() - 3600,
+			$this->conf['path'],
+			$this->conf['domain'],
+			$this->conf['secure'],
+			$this->conf['httponly']
+		);
 	}
 
 	/**

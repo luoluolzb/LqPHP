@@ -1,6 +1,7 @@
 <?php
 /**
  * @description 视图类
+ * 可以使用模板引擎（smarty）中的变量和方法
  * @author      luoluolzb
  */
 namespace lqphp\data;
@@ -27,23 +28,34 @@ class View implements DataInterface
 	 */
 	public function __construct($tpl = null)
 	{
-		$this->engine = new Smarty();
+		$this->engine = new Smarty;
+		// 加载配置文件中的配置
+		$confs = Config::get('smarty');
+		foreach ($confs['vars'] as $name => $value) {
+			$this->engine->$name = $value;
+		}
+		foreach ($confs['dirs'] as $method => $value) {
+			if (method_exists($this->engine, $method)) {
+				call_user_func([$this->engine, $method], $value);
+			}
+		}
+
+		// 配置模板目录
 		$request = Request::instance();
 		if (Config::get('app.multi_module')) {
-			$this->engine->setTemplateDir(sprintf(
+			$templateDir = sprintf(
 				APP_PATH . '%s/view/%s',
 				$request->module(),
 				$request->controller()
-			));
+			);
 		} else {
-			$this->engine->setTemplateDir(sprintf(
+			$templateDir = sprintf(
 				APP_PATH . 'view/%s',
 				$request->controller()
-			));
+			);
 		}
-		$this->engine->setCompileDir(RUNTIME_PATH . 'smarty/templates_c/');
-		$this->engine->setConfigDir(RUNTIME_PATH . 'smarty/configs/');
-		$this->engine->setCacheDir(RUNTIME_PATH . 'smarty/cache/');
+		$this->engine->setTemplateDir($templateDir);
+		
 		if (is_null($tpl)) {
 			$this->tpl = sprintf('%s.tpl', $request->action());
 		} else {
@@ -61,15 +73,36 @@ class View implements DataInterface
 	}
 
 	/**
-	 * 魔术方法：让view可以调用模板引擎方法
-	 * @param  string $method    方法名
-	 * @param  array  $arguments 参数列表
+	 * 获取模板引擎变量
+	 * @param  string $name  变量名
+	 * @param  mixed  $value 值
+	 * @return void
+	 */
+	public function __set($name, $value)
+	{
+		$this->engine->$name = $value;
+	}
+
+	/**
+	 * 设置模板引擎变量
+	 * @param  string $name  变量名
 	 * @return mixed
 	 */
-	public function __call($method, $arguments)
+	public function __get($name)
+	{
+		return $this->engine->$name;
+	}
+
+	/**
+	 * 魔术方法：让view可以调用模板引擎方法
+	 * @param  string $method  方法名
+	 * @param  array  $args    参数列表
+	 * @return mixed
+	 */
+	public function __call($method, $args)
 	{
 		if (method_exists($this->engine, $method)) {
-			return call_user_func_array([$this->engine, $method], $arguments);
+			return call_user_func_array([$this->engine, $method], $args);
 		}
 	}
 
@@ -87,20 +120,13 @@ class View implements DataInterface
 	}
 
 	/**
-	 * 设置/获取数据
+	 * 获取或者设置数据
+	 * smarty中没有方法实现该接口
 	 * @param  string $data
-	 * @return mixed
+	 * @return void
 	 */
 	public function data($data = null)
 	{
-	}
-
-	/**
-	 * 视图渲染输出
-	 */
-	public function send()
-	{
-		$this->engine->display($this->tpl);
 	}
 
 	/**
@@ -110,5 +136,13 @@ class View implements DataInterface
 	public function fetch()
 	{
 		return $this->fetch($this->tpl);
+	}
+
+	/**
+	 * 视图渲染输出
+	 */
+	public function send()
+	{
+		$this->engine->display($this->tpl);
 	}
 }

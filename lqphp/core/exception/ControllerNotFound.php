@@ -3,8 +3,8 @@
  * @description 异常类：类不存在
  * @author      luoluolzb
  */
-namespace lqphp\exception\NotFound;
+namespace lqphp\exception;
 
-class NotFound extends \RuntimeException
+class ControllerNotFound extends ClassNotFound
 {
 }

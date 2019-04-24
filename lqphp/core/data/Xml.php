@@ -38,16 +38,6 @@ class Xml implements DataInterface
 	}
 
 	/**
-	 * 发送数据到客户端
-	 * @return bool
-	 */
-	public function send()
-	{
-		header('Content-Type: text/xml');
-		echo $this->fetch();
-	}
-
-	/**
 	 * 获取渲染结果
 	 * @return string
 	 */
@@ -59,6 +49,16 @@ class Xml implements DataInterface
 		$result .= $this->_formatXML($this->data);
 		$result .=  '</'. $root . ">";
 		return $result;
+	}
+
+	/**
+	 * 发送数据到客户端
+	 * @return boolean
+	 */
+	public function send()
+	{
+		header('Content-Type: text/xml');
+		echo $this->fetch();
 	}
 
 	/**

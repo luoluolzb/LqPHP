@@ -112,9 +112,9 @@ header .tool>button{
 		  </div>
 		</div>
 	</div>
-	<script src="/static/jquery/jquery-1.12.4.min.js"></script>
-	<script src="/static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
+	<script src="/static/libs/jquery/jquery-1.12.4.min.js"></script>
+	<script src="/static/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script>
 function IsURL(str_url)
 {
 	var strRegex ='https?://.+';

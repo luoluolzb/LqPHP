@@ -4,9 +4,11 @@
  * @author      luoluolzb
  */
 namespace lqphp;
-
 use \FastRoute\RouteCollector;
 use \FastRoute\Dispatcher as RouteDispatcher;
+use lqphp\exception\ControllerNotFound;
+use lqphp\exception\ModuleNotFound;
+use lqphp\exception\ActionNotFound;
 
 class Route
 {
@@ -250,7 +252,7 @@ class Route
 
 		if (Config::get('app.multi_module')) {
 			if (!is_dir(APP_PATH . $module)) {
-				throw new exception\NotFound\Module("模块 '{$module}' 不存在");
+				throw new ModuleNotFound("模块 '{$module}' 不存在");
 			}
 			$class = sprintf('\app\%s\controller\%s', $module, $controller);
 			Config::import(APP_PATH . $module . '/config/');
@@ -259,12 +261,12 @@ class Route
 			Config::import(APP_PATH . 'config/');
 		}
 		if (!class_exists($class)) {
-			throw new exception\NotFound\Controller("控制器 '{$class}' 不存在");
+			throw new ControllerNotFound("控制器 '{$class}' 不存在");
 		}
 
 		$controllerObj = new $class;
 		if (!method_exists($controllerObj, $action)) {
-			throw new exception\NotFound\Action("行为 '{$class}@{$action}' 不存在");
+			throw new ActionNotFound("行为 '{$class}@{$action}' 不存在");
 		}
 
 		//控制器方法调用
