@@ -12,7 +12,7 @@ return [
 		//用户邮箱
 		'user' => 'luoluolzb@163.com',
 		//认证密码
-		'passwd' => '225778184bjjh',
+		'passwd' => 'passwd',
 		//连接端口
 		'port' => 465,
 		//使用安全ssl连接
