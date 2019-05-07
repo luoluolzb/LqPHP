@@ -19,11 +19,5 @@
             "homepage": "http://luoluolzb.cn",
             "role": "Developer"
         }
-    ],
-	"repositories": {
-	    "packagist": {
-	        "type": "composer",
-	        "url": "https://packagist.phpcomposer.com"
-	    }
-	}
+    ]
 }

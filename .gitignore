@@ -1,0 +1,12 @@
+
+# 忽略依赖的包
+/vendor
+
+# 忽略运行时运行产生的文件
+/runtime/log/
+/runtime/route/
+/runtime/session/
+/runtime/smarty/cache/
+/runtime/smarty/configs/
+/runtime/smarty/templates/
+/runtime/smarty/templates_c/
