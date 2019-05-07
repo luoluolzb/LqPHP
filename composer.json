@@ -7,9 +7,9 @@
     "license": "MIT",
 	"require": {
 		"php": ">=5.4",
-		"smarty/smarty": "~3.1",
+		"smarty/smarty": "~3.1.0",
 		"nikic/fast-route": "~1.2.0",
-		"catfan/Medoo": "~1.5.4",
+		"catfan/medoo": "~1.5.4",
 		"filp/whoops": "~2.1.14"
 	},
 	"authors": [
