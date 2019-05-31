@@ -14,10 +14,11 @@ class Upload extends \lqphp\Controller
 			return view();
 		}
 		$upFile = uploadfile('file');
-		if (!$upFile->save('myfile')) {
+		if ($upFile->save('myfile')) {
 			return format($upFile->info());
+		} else {
+			echo $upFile->error();
 		}
-		return format($upFile->info());
 	}
 
 	public function image()
@@ -26,10 +27,11 @@ class Upload extends \lqphp\Controller
 			return view('file.tpl');
 		}
 		$upFile = uploadfile('image');
-		$upFile->addPath('image/');
-		if (!$upFile->save('myfile')) {
+		$upFile->addPath('image' . DS);
+		if ($upFile->save('myfile')) {
 			return format($upFile->info());
+		} else {
+			echo $upFile->error();
 		}
-		return format($upFile->info());
 	}
 }

@@ -54,20 +54,21 @@ class UploadFile extends AbstractComp
 	 * 保存上传文件(只能保存一次)
 	 * @param string $field 表单文件字段
 	 * @param string $name  自定义模式下, 保存的文件名(无需后缀)
-	 * @return bool
+	 * @return boolean
 	 */
 	public function save($field, $name = [])
 	{
+		if (!$this->validate($field)) {
+			return false;
+		}
+
 		if (!file_exists($this->conf['save_path'])) {
-			if (!mkdir($this->conf['save_path'])) {
+			if (!mkdir($this->conf['save_path'], 0777, true)) {
 				$this->error = '文件保存失败(创建保存目录失败)！';
 				return false;
 			}
 		}
 
-		if (!$this->validate($field)) {
-			return false;
-		}
 		switch ($this->conf['save_mode']) {
 			case 'random':
 				$this->file['name'] = md5(uniqid('lqphp_', true)) . '.' . $this->file['ext'];
@@ -84,14 +85,17 @@ class UploadFile extends AbstractComp
 			default:
 				break;
 		}
+		
 		$this->file['full'] = $this->file['path'] . $this->file['name'];
-		if (!@move_uploaded_file($this->file['temp'], $this->file['full'])) {
+		if (!move_uploaded_file($this->file['temp'], $this->file['full'])) {
 			$this->error = '文件保存失败！';
 			return false;
 		}
+		
 		if ($this->file['type'] == 'image' && $this->conf['compress']) {
 			$this->compress();
 		}
+		
 		return true;
 	}
 
@@ -125,32 +129,35 @@ class UploadFile extends AbstractComp
 	/**
 	 * 验证文件
 	 * @param  string $field   表单中文件字段名
-	 * @return bool
+	 * @return boolean
 	 */
 	protected function validate($field)
 	{
 		$file = $_FILES[$field];
 		if (isset($file) && $file['error'] != 0) {
-			$this->error = '文件加载失败(errcode = ' . @$file['error'] . ')!';
+			$this->error = '文件上传失败(errcode = ' . @$file['error'] . ')!';
 			return false;
 		}
-		$this->file['orig'] = mb_convert_encoding($file['name'], 'GBK', 'UTF-8');
-		$this->file['temp'] = mb_convert_encoding($file['tmp_name'], 'GBK', 'UTF-8');
+		$this->file['orig'] = $file['name'];
+		$this->file['temp'] = $file['tmp_name'];
+		// $this->file['orig'] = mb_convert_encoding($file['name'], 'GBK', 'UTF-8');
+		// $this->file['temp'] = mb_convert_encoding($file['tmp_name'], 'GBK', 'UTF-8');
+		
+		$fileInfo = new FileInfo($this->file['orig']);
+		$this->file['ext']  = $fileInfo->exten();
 
-		$fileObj = new FileInfo($this->file['orig']);
-		$this->file['ext']  = $fileObj->exten();
-
-		$fileObj = new FileInfo($this->file['temp']);
-		$this->file['size'] = $fileObj->size();
-		$this->file['mime'] = $fileObj->mime();
-		$this->file['type'] = $fileObj->type();
+		$fileInfo = new FileInfo($this->file['temp']);
+		$this->file['size'] = $fileInfo->size();
+		$this->file['mime'] = $fileInfo->mime();
+		$this->file['type'] = $fileInfo->type();
 		$this->file['path'] = $this->conf['save_path'];
 
 		/* 验证文件 */
 		if (isset($this->conf)) {
 			if (isset($this->conf['size'])) {
-				if ($this->file['size'] < $this->conf['size'][0] || $this->file['size'] > $this->conf['size'][1]) {
-					$this->error = '文件大小必须在[' . $this->conf['size'][0] . ', ' . $this->conf['size'][1] . ']之间!';
+				list($minSize, $maxSize) = $this->conf['size'];
+				if ($this->file['size'] < $minSize || $this->file['size'] > $maxSize) {
+					$this->error = '文件大小必须在[' . $minSize . ', ' . $maxSize . ']之间!';
 					return false;
 				}
 			}
@@ -171,7 +178,7 @@ class UploadFile extends AbstractComp
 	}
 
 	/**
-	 * 压缩图片品质
+	 * 压缩图片品质（需要开启GD库）
 	 * @return boolean
 	 */
 	protected function compress()
