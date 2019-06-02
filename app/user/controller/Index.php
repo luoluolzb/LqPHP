@@ -13,7 +13,7 @@ class Index extends \lqphp\Controller
 		return format($userModel->data());
 	}
 
-	//主页
+	// 主页
 	public function index()
 	{
 		$view = view();
@@ -77,7 +77,7 @@ class Index extends \lqphp\Controller
 		return $view;
 	}
 
-	//用户激活
+	// 用户激活
 	public function validate($val_id = null)
 	{
 		$success = false;
@@ -101,7 +101,7 @@ class Index extends \lqphp\Controller
 		return $view;
 	}
 
-	//用户登陆
+	// 用户登陆
 	public function login()
 	{
 		$user_name = $passwd = $errmsg = '';
@@ -136,7 +136,7 @@ class Index extends \lqphp\Controller
 		return $view;
 	}
 
-	//登出
+	// 登出
 	public function logout()
 	{
 		cookie('user', null);

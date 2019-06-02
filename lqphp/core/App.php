@@ -25,22 +25,22 @@ class App
 	 */
 	protected function __construct()
 	{
-		//读取应用配置文件
+		// 读取应用配置文件
 		Config::import(CONFIG_PATH);
 
-		//时区设置
+		// 时区设置
 		date_default_timezone_set(Config::get('app.timezone'));
 
-		//注册错误处理
+		// 注册错误处理
 		Error::register();
 
-		//导入hook
+		// 导入hook
 		Hook::import(Config::get('hook'));
 
-		//触发应用初始化钩子
+		// 触发应用初始化钩子
 		Hook::trigger('app_init');
 
-		//加载助手函数库
+		// 加载助手函数库
 		if (Config::get('app.helper_fun')) {
 			Loader::file(LQPHP_PATH . 'helper.php');
 		}
@@ -63,10 +63,10 @@ class App
 	 */
 	public function __destruct()
 	{
-		//保存日志
+		// 保存日志
 		Logger::instance()->save();
 
-		//触发应用结束钩子
+		// 触发应用结束钩子
 		Hook::trigger('app_end');
 	}
 
@@ -75,19 +75,19 @@ class App
 	 */
 	public function run()
 	{
-		//实例化路由
+		// 实例化路由
 		$route = Route::instance();
 
-		//导入配置路由
+		// 导入配置路由
 		$route->import(Config::get('route'));
 
-		//加载应用自定义文件
+		// 加载应用自定义文件
 		Loader::file(APP_PATH . 'handle.php');
 
-		//路由调度
+		// 路由调度
 		$route->dispatch();
 
-		//发送数据
+		// 发送数据
 		Response::instance()->send();
 	}
 
@@ -112,7 +112,6 @@ class App
 			return call_user_func_array($this->plugins[$name], $args);
 		} else {
 			throw new ClassNotFound("插件 '{$name}' 不存在");
-		;
 		}
 	}
 }

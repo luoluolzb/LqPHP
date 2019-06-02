@@ -8,19 +8,19 @@ class Request extends \lqphp\Controller
 		return 'Request ok';
 	}
 
-	//获取请求方法
+	// 获取请求方法
 	public function method()
 	{
 		return method();
 	}
 
-	//获取请求地址
+	// 获取请求地址
 	public function address()
 	{
 		return module() . '\\' . controller() . '@' . action();
 	}
 
-	//获取请求信息
+	// 获取请求信息
 	public function info()
 	{
 		return format($this->request->info());

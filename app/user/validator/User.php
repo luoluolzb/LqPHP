@@ -3,6 +3,7 @@ namespace app\user\validator;
 
 class User extends \lqphp\Validator
 {
+	// 验证规则
 	protected $rules = [
 		'user_name' => [
 			'name' => '用户名',

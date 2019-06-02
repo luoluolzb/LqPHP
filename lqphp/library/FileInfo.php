@@ -147,8 +147,8 @@ class FileInfo
 		}
 
 		$type = explode(';', $type);
-		//需要加上这段，因为如果使用mime_content_type函数来
-		//获取一个不存在的$path时会返回'application/octet-stream'
+		// 需要加上这段，因为如果使用mime_content_type函数来
+		// 获取一个不存在的$path时会返回'application/octet-stream'
 		if ($fmime != 'internal' && $type[0] == 'application/octet-stream') {
 			$pinfo = pathinfo($file); 
 			$ext = isset($pinfo['extension']) ? strtolower($pinfo['extension']) : '';

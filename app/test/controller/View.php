@@ -3,7 +3,7 @@ namespace app\test\controller;
 
 class View extends \lqphp\Controller
 {
-	//视图测试
+	// 视图测试
 	public function index()
 	{
 		$view = view();

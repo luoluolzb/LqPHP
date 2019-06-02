@@ -23,7 +23,7 @@ class Db extends \lqphp\Controller
 		return format($user->data());
 	}
 
-	//原生SQL查询测试
+	// 原生SQL查询测试
 	public function query()
 	{
 		//query() 返回 PDOStatement 实例
@@ -31,7 +31,7 @@ class Db extends \lqphp\Controller
 		return format($users);
 	}
 
-	//使用查询器
+	// 使用查询器
 	public function db()
 	{
 		$users = db()->select("user", ['id', 'name']);
@@ -41,7 +41,7 @@ class Db extends \lqphp\Controller
 	/* 使用模型操作数据库 */
 
 
-	//查询单个记录
+	// 查询单个记录
 	public function get($id)
 	{
 		$user = User::get($id);
@@ -51,7 +51,7 @@ class Db extends \lqphp\Controller
 		return format($user->data());
 	}
 
-	//查询多个记录
+	// 查询多个记录
 	public function gets()
 	{
 		$users = User::gets();
@@ -61,7 +61,7 @@ class Db extends \lqphp\Controller
 		return format($users);
 	}
 
-	//保存一个记录
+	// 保存一个记录
 	public function save()
 	{
 		$user = new User();
@@ -73,7 +73,7 @@ class Db extends \lqphp\Controller
 		return format($user->error());
 	}
 
-	//保存多个记录
+	// 保存多个记录
 	public function saveList()
 	{
 		$user = new User;
@@ -92,7 +92,7 @@ class Db extends \lqphp\Controller
 		return format($user->error());
 	}
 
-	//修改记录
+	// 修改记录
 	public function update()
 	{
 		$user = new User;
@@ -104,7 +104,7 @@ class Db extends \lqphp\Controller
 		}
 	}
 
-	//查询记录并指定格式
+	// 查询记录并指定格式
 	public function book()
 	{
 		$data = db()->select('user', [
@@ -121,45 +121,45 @@ class Db extends \lqphp\Controller
 
 	/* 关联查询 */
 
-	//查询用户的一本书
+	// 查询用户的一本书
 	public function hasOne()
 	{
 		$book = User::get(1)->book();
 		return format($book->data());
 	}
 
-	//查询用户的多本书
+	// 查询用户的多本书
 	public function hasMany()
 	{
 		return format(User::get(1)->books());
 	}
 
-	//查询书的拥有者
+	// 查询书的拥有者
 	public function belongsTo()
 	{
 		$user = Book::get(1001)->user();
 		return format($user->data());
 	}
 
-	//查询用户的角色
+	// 查询用户的角色
 	public function userrole()
 	{
 		return format(User::get(['name' => '洛洛'])->role());
 	}
 
-	//查询角色的用户
+	// 查询角色的用户
 	public function roleuser()
 	{
 		return format(Role::get(1000)->user());
 	}
 
-	//删除记录
+	// 删除记录
 	public function delete()
 	{
 		echo format(User::delete(2005));
 	}
 
-	//聚合查询
+	// 聚合查询
 	public function count()
 	{
 		$user = new User();

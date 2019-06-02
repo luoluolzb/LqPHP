@@ -19,13 +19,13 @@ return [
 	//目录配置(smarty3.1不允许直接用变量方式访问，因此使用setter方法作为键)
 	'dirs' => [
 		//缓存文件目录
-		'setCacheDir' => RUNTIME_PATH.'smarty/cache',
+		'setCacheDir' => RUNTIME_PATH . 'smarty/cache',
 		//配置文件目录
-		'setConfigDir' => RUNTIME_PATH.'smarty/configs',
+		'setConfigDir' => RUNTIME_PATH . 'smarty/configs',
 		//编译文件目录
-		'setCompileDir' => RUNTIME_PATH.'smarty/templates_c',
+		'setCompileDir' => RUNTIME_PATH . 'smarty/templates_c',
 		//插件文件目录
-		'addPluginsDir' => RUNTIME_PATH.'smarty/plugins',
+		'addPluginsDir' => RUNTIME_PATH . 'smarty/plugins',
 		//模板文件目录（系统自动配置）
 		//'setTemplateDir' => RUNTIME_PATH.'smarty/templates',
 	],

@@ -20,28 +20,28 @@ class Logger extends \Psr\Log\AbstractLogger
 	protected $savePath;
 
 	/**
-	* 日志保存等级
-	* @var \Psr\Log\LogLevel
-	*/
+	 * 日志保存等级
+	 * @var \Psr\Log\LogLevel
+	 */
 	protected $saveLevel;
 
 	/**
-	* 日志列表
-	* @var array(
+	 * 日志列表
+	 * @var array(
 		[
 			'level' => string,
 			'message' => string,
 			'time' => integer,
 		],
 		...
-	)
-	*/
+	 )
+	 */
 	protected $list = [];
 
 	/**
-	* 日志对应等级
-	* @var array
-	*/
+	 * 日志对应等级
+	 * @var array
+	 */
 	protected $index = [
 		'emergency' => 1,
 		'alert' => 2,
@@ -137,10 +137,10 @@ class Logger extends \Psr\Log\AbstractLogger
 	}
 
 	/**
-	* 比较日志等级比否需要保存
+	 * 比较日志等级比否需要保存
 	 * @param \Psr\Log\LogLevel  $level  日志级别
 	 * @return boolean
-	*/
+	 */
 	public function isSave($level)
 	{
 		return $this->index[$level] <= $this->index[$this->saveLevel];

@@ -3,9 +3,9 @@
  * 邮箱配置
  */
 return [
-	//发送人
+	// 发送人
 	'from' => 'luoluolzb@163.com',
-	//邮件服务器
+	// 邮件服务器
 	'server' => [
 		//服务器地址
 		'address' => 'smtp.163.com',

@@ -16,7 +16,7 @@ Route::post('user/index/register', 'user/index/postRegister');
  * 数组快速注册
  */
 return [
-	//全局验证码
+	// 全局验证码
 	'captcha' => function() { 
 		$captcha = new Captcha();
 		$session = Session::instance();
@@ -24,6 +24,7 @@ return [
 		$captcha->output();
 	},
 
+	// 测试
 	'hello/{name:\w+}' => function($name) {
 		return sprintf('hello, %s!', $name);
 	},

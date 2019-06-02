@@ -1,2 +1,9 @@
 *.log
 public/uploads/
+app/bookmarker/
+app/guestbook/
+app/lottery/
+app/test/
+app/user/
+lqphp_test.sql
+update.md

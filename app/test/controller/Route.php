@@ -29,7 +29,7 @@ class Route extends \lqphp\Controller
 		return sprintf("Memeory = %lfK, Time = %fms", $mem, $t / 1000);
 	}
 
-	//测试后缀，请先配置 app.url_suffix
+	// 测试后缀，请先配置 app.url_suffix
 	public function suffix($arg = 'no argument')
 	{
 		return $arg;

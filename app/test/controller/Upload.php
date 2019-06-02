@@ -8,6 +8,7 @@ class Upload extends \lqphp\Controller
 		return 'Upload ok';
 	}
 
+	// 上传文件
 	public function file()
 	{
 		if (method('GET')) {
@@ -21,6 +22,7 @@ class Upload extends \lqphp\Controller
 		}
 	}
 
+	// 上传图片
 	public function image()
 	{
 		if (method('GET')) {

@@ -43,18 +43,18 @@ class Captcha extends AbstractComp
 	 */
 	public function output($path = null)
 	{
-		//创建画布
+		// 创建画布
 		$img = imagecreatetruecolor($this->width, $this->height);
-		//填充背景
+		// 填充背景
 		imagefill($img, 0, 0, imagecolorallocate($img,
 			$this->conf['background_color'][0],
 			$this->conf['background_color'][1],
 			$this->conf['background_color'][2])
 		);
-		//前景色
+		// 前景色
 		$clr = imagecolorallocate($img, mt_rand(50, 200), mt_rand(50, 200),  mt_rand(50, 200));
 
-		//添加干扰曲线
+		// 添加干扰曲线
 		$sy = mt_rand($this->height/2 - 5, $this->height/2 + 5);
 		$rand1 = mt_rand(10, 30);
 		$rand2 = mt_rand(0, $this->height / 2);
@@ -67,7 +67,7 @@ class Captcha extends AbstractComp
 			imageline($img, $px + $width_2, $py + $sy, $px + $width_2 - $hh, $py + $sy + $hh, $clr);
 		}
 
-		//添加验证码字符
+		// 添加验证码字符
 		$x = $this->conf['padding_x'];
 		$y = $this->height - ($this->height - $this->conf['font_size'])/2;
 		for($i = 0; $i < $this->conf['length']; ++ $i){
@@ -82,7 +82,7 @@ class Captcha extends AbstractComp
 			$x += $this->conf['font_size'];
 		}
 
-		//输出图像
+		// 输出图像
 		$imgFun = 'image' . $this->conf['format'];
 		if ($path) {
 			$res = $imgFun($img, $path);

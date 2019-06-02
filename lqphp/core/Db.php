@@ -20,9 +20,12 @@ class Db
 	 */
 	protected $engine;
 
+	/**
+	 * 构造函数
+	 */
 	protected function __construct()
 	{
-		//触发数据库初始化钩子
+		// 触发数据库初始化钩子
 		Hook::trigger('db_init');
 		$this->engine = new Medoo(Config::get('db'));
 	}

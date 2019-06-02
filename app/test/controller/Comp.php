@@ -8,7 +8,7 @@ class Comp extends \lqphp\Controller
 		return 'Comp ok';
 	}
 	
-	/* 邮件类测试 */
+	// 邮件类测试
 	public function mail()
 	{
 		$mailer = mailer();
@@ -21,7 +21,7 @@ class Comp extends \lqphp\Controller
 		}
 	}
 
-	/* 验证码类测试 */
+	// 验证码类测试
 	public function mycaptcha()
 	{
 		$captcha = captcha([
@@ -31,11 +31,11 @@ class Comp extends \lqphp\Controller
 			'font' => LQPHP_PATH . 'ttf/Consola.ttf',
 			'background_color' => [128, 128, 128],
 		]);
-		//session('captcha', $captcha->code());
+		session('captcha', $captcha->code());
 		$captcha->output();
 	}
 
-	/* 验证器测试 */
+	// 验证器测试
 	public function validate()
 	{
 		$data = [
@@ -63,7 +63,7 @@ class Comp extends \lqphp\Controller
 		}
 	}
 
-	/* 验证器测试，验证单个数据 */
+	// 验证器测试，验证单个数据
 	public function validateOne($age = null)
 	{
 		$validator = validator();
@@ -75,7 +75,7 @@ class Comp extends \lqphp\Controller
 
 	}
 
-	/* cookie类库测试 */
+	// cookie类库测试：添加
 	public function cookie()
 	{
 		cookie('user', [
@@ -85,18 +85,14 @@ class Comp extends \lqphp\Controller
 		echo format(cookie('user'));
 	}
 
+	// cookie类库测试：删除
 	public function delcook()
 	{
 		cookie('user', null);
 		echo format(cookie('user'));
 	}
 
-	public function getcook()
-	{
-		echo format(cookie('user'));
-	}
-
-	/* session类库测试 */
+	// session类库测试：添加
 	public function session()
 	{
 		session('user', [
@@ -106,13 +102,14 @@ class Comp extends \lqphp\Controller
 		echo format(session('user'));
 	}
 
+	// session类库测试：删除
 	public function delsess()
 	{
 		session('user', null);
 		echo format(session('user'));
 	}
 
-	/* 分页测试 */
+	// 分页测试
 	public function pager($page = 1)
 	{
 		$count = 100;  //项目数量，每页数量见 config/pager.php

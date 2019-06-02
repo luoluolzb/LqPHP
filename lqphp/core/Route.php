@@ -24,9 +24,9 @@ class Route
 	protected $request;
 
 	/**
-	* 响应对象
-	* @var Response
-	*/
+	 * 响应对象
+	 * @var Response
+	 */
 	protected $response;
 
 	/**
