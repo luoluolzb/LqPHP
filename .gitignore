@@ -1,5 +1,4 @@
 *.log
-public/uploads/
 
 app/bookmarker/
 app/guestbook/
@@ -8,6 +7,10 @@ app/test/
 app/user/
 
 extend/action/
+
+public/uploads/
+public/static/libs/jquery/
+public/static/libs/bootstrap-3.3.7/
 
 lqphp_test.sql
 update.md

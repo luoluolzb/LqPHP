@@ -9,5 +9,7 @@ return [
 	'db_init' => [],
 
 	// 自定义钩子
-	'test_action' => ['action\TestAction'],
+	// 'test_action' => [
+	// 	'action\TestAction'
+	// ],
 ];
