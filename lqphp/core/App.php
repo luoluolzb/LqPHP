@@ -27,7 +27,7 @@ class App
 	{
 		// 读取应用配置文件
 		Config::import(CONFIG_PATH);
-
+		
 		// 时区设置
 		date_default_timezone_set(Config::get('app.timezone'));
 

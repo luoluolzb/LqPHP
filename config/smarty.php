@@ -27,6 +27,6 @@ return [
 		//插件文件目录
 		'addPluginsDir' => RUNTIME_PATH . 'smarty/plugins',
 		//模板文件目录（系统自动配置）
-		//'setTemplateDir' => RUNTIME_PATH.'smarty/templates',
+		//'setTemplateDir' => RUNTIME_PATH . 'smarty/templates',
 	],
 ];

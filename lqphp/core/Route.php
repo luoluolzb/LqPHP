@@ -250,23 +250,32 @@ class Route
 		$controller = $this->request->controller();
 		$action = $this->request->action();
 
-		if (Config::get('app.multi_module')) {
-			if (!is_dir(APP_PATH . $module)) {
-				throw new ModuleNotFound("模块 '{$module}' 不存在");
+		try {
+			if (Config::get('app.multi_module')) {
+				if (!is_dir(APP_PATH . $module)) {
+					throw new ModuleNotFound("模块 '{$module}' 不存在");
+				}
+				$class = sprintf('\app\%s\controller\%s', $module, $controller);
+				Config::import(APP_PATH . $module . '/config/');
+			} else {
+				$class = sprintf('\app\controller\%s', $controller);
+				Config::import(APP_PATH . 'config/');
 			}
-			$class = sprintf('\app\%s\controller\%s', $module, $controller);
-			Config::import(APP_PATH . $module . '/config/');
-		} else {
-			$class = sprintf('\app\controller\%s', $controller);
-			Config::import(APP_PATH . 'config/');
-		}
-		if (!class_exists($class)) {
-			throw new ControllerNotFound("控制器 '{$class}' 不存在");
-		}
+			if (!class_exists($class)) {
+				throw new ControllerNotFound("控制器 '{$class}' 不存在");
+			}
 
-		$controllerObj = new $class;
-		if (!method_exists($controllerObj, $action)) {
-			throw new ActionNotFound("行为 '{$class}@{$action}' 不存在");
+			$controllerObj = new $class;
+			if (!method_exists($controllerObj, $action)) {
+				throw new ActionNotFound("行为 '{$class}@{$action}' 不存在");
+			}
+		} catch (\RuntimeException $exception) {
+			if (Config::get('app.debug')) {
+				throw $exception;
+			} else {
+				$this->response->error(404);
+			}
+			return;
 		}
 
 		//控制器方法调用
